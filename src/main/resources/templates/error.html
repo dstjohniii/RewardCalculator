@@ -1,0 +1,16 @@
+<!-- All code for js, css, and html for the error page was from https://codepen.io/arcs/pen/vOwJBw-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	    <meta charset="UTF-8">
+	    <title>End-point Not Found</title>
+	    <link th:href="@{/styles/main.css}" rel="stylesheet" />
+	</head>
+	<body>
+		<p class="center">Space Invadors destroyed this page! Take revenge on them!
+		  <br/> Use <span class="label label-danger">Space</span> to shoot and <span class="label label-danger">←</span>&#160;<span class="label label-danger">→</span> to move!&#160;&#160;&#160;<button class="btn btn-default btn-xs" id="restart">Restart</button></p>
+		
+		<canvas id="space-invaders"/>
+	</body>
+	<script type="text/javascript" th:src="@{/js/invader.js}"></script>
+</html>

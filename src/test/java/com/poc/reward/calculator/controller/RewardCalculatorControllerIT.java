@@ -17,19 +17,19 @@ class RewardCalculatorControllerIT {
 	@LocalServerPort
 	private int port;
 
-	private URL base;
+	private URL index;
 
 	@Autowired
 	private TestRestTemplate template;
 
     @BeforeEach
     public void setUp() throws Exception {
-        this.base = new URL("http://localhost:" + port + "/");
+        this.index = new URL("http://localhost:" + port + "/");
     }
 
     @Test
-    void getHello() throws Exception {
-        ResponseEntity<String> response = template.getForEntity(base.toString(),
+    void givenIndex_whenCalled_thenOk() throws Exception {
+        ResponseEntity<String> response = template.getForEntity(index.toString(),
                 String.class);
         assertThat(response.getBody()).isEqualTo("Home");
     }

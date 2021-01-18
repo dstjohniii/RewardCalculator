@@ -19,7 +19,7 @@ class TransactionToCustomerTransactionDTOMapperTest {
 	private TransactionToCustomTransactionDTOMapper transactionToCustomTransactionDTOMapper;
 
 	@Test
-	void givenTransactionToCustomerTransactionDTO_whenMaps_thenCorrect() {
+	void givenTransactionToCustomerTransactionDTOMapper_whenMaps_thenCorrect() {
 		Transaction transaction = Transaction.builder()
 				.id(1L)
 				.amount(new BigDecimal(250.15))

@@ -20,7 +20,7 @@ class RewardCalculatorControllerTest {
 	private MockMvc mvc;
 
 	@Test
-	void getHello() throws Exception {
+	void givenIndex_whenCalled_thenOk() throws Exception {
 		mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
 				.andExpect(content().string(equalTo("Home")));

@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
 import com.poc.reward.calculator.dto.CustomerTransactionDTO;
@@ -16,21 +18,20 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class RewardCalculatorServiceImpl implements RewardCalculatorService {
 
-	private final TransactionRepository transactionRepository;
-	private final TransactionToCustomTransactionDTOMapper transactionToCustomTransactionDTOMapper;
+	TransactionRepository transactionRepository;
+	TransactionToCustomTransactionDTOMapper transactionToCustomTransactionDTOMapper;
 	
 	@Override
 	public List<CustomerTransactionDTO> getAllCustomerTransactions() {
-		return StreamSupport.stream(transactionRepository.findAll().spliterator(), false)
+		return transactionRepository.findAll().stream()
 			.map(this::convertToCustomerTransactionDTO)
-			.collect(Collectors.toList());
-		
+			.toList();
 	}
 	
 	private CustomerTransactionDTO convertToCustomerTransactionDTO(Transaction transactions) {
 		return transactionToCustomTransactionDTOMapper.transactionToCustomTransactionDTOMapper(transactions);
 	}
-	
 }

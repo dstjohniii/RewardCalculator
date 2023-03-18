@@ -2,6 +2,8 @@ package com.poc.reward.calculator.controller;
 
 import java.util.List;
 
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import org.springframework.boot.actuate.endpoint.InvalidEndpointRequestException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,9 +16,10 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class RewardCalculatorController {
 
-	private final RewardCalculatorService rewardCalculatorService;
+	RewardCalculatorService rewardCalculatorService;
 	
 	@GetMapping("/")
 	public String index() {
@@ -33,5 +36,4 @@ public class RewardCalculatorController {
 	public String calculateRewards() {
 		throw new InvalidEndpointRequestException("Request method is not finished", "Incomplete");
 	}
-	
 }

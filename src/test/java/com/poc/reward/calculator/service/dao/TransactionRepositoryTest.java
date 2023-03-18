@@ -13,9 +13,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.poc.reward.calculator.type.Customer;
 import com.poc.reward.calculator.type.Transaction;
+import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
-@javax.transaction.Transactional
+@Transactional
 class TransactionRepositoryTest {
 
 	@Autowired
